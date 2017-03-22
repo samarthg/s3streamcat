@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(name='s3streamcat',
-      version='0.1.1',
+      version='0.1.2',
       description='Streaming based unix cat like functionality for file on S3',
-      long_description=open('README.txt').read(),
+      long_description=open('README.md').read(),
       url='https://github.com/samarthg/s3streamcat',
       download_url = 'https://github.com/samarthg/s3streamcat/archive/0.1.1.tar.gz',
       author='Samarth Gahire',
