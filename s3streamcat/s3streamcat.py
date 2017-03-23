@@ -8,7 +8,6 @@ from s3client import S3Client
 def get_compressed_data_from_s3_file_in_ranges(s3, data_type):
     d = zlib.decompressobj(16+zlib.MAX_WBITS)
     zd = bz2.BZ2Decompressor()
-    #zd.decompress("BZ")
     lzmad = lzma.LZMADecompressor()
     start = 0
     end = 1023
@@ -54,8 +53,16 @@ def stream_s3_file():
     args = parser.parse_args()
 
     file_url = args.s3_file_path
-    bucket = file_url.split('/', 3)[2]
-    file_key = file_url.split('/', 3)[3]
+    path_data = file_url.split('/', 3)
+    if len(path_data)!=4:
+        print("\nS3 path provided seems to be incorrect. Please check.\n")
+        sys.exit(1)
+    bucket = path_data[2]
+    file_key = path_data[3]
+
+    if not file_key or file_key[-1]=='/':
+        print("\nS3 Directory is not supported, please provide file path.\n")
+        sys.exit(1)
 
     if ".gz" in file_key:
         data_type = 'gz'
