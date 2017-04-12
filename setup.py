@@ -1,11 +1,11 @@
 from setuptools import setup
 
 setup(name='s3streamcat',
-      version='0.1.4',
+      version='0.1.5',
       description='Streaming based unix cat like functionality for file on S3. Supports gzip, bzip and xz compressed files as well',
       long_description=open('README.md').read(),
       url='https://github.com/samarthg/s3streamcat',
-      download_url = 'https://github.com/samarthg/s3streamcat/archive/0.1.4.tar.gz',
+      download_url = 'https://github.com/samarthg/s3streamcat/archive/0.1.5.tar.gz',
       author='Samarth Gahire',
       author_email='samarth.gahire@gmail.com',
       license='MIT',
@@ -19,5 +19,5 @@ setup(name='s3streamcat',
               's3streamcat = s3streamcat.s3streamcat:stream_s3_file'
           ]
       },
-      keywords = ['s3', 'print', 'aws', 'cat', 'stream', 'gzip', 'bzip', 'xz'],
+      keywords = ['s3cat', 's3', 'print', 'aws', 'cat', 'stream', 'gzip', 'bzip', 'xz'],
       )
