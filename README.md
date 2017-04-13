@@ -24,9 +24,11 @@ Typical usage often looks like this::
     s3streamcat s3://bucketname/dir/file_path | grep something
 
 To try different encoding in case utf-8 is unable to decode your stream::
+
     s3streamcat -e latin-1 s3://bucketname/dir/file_path.gz
 
 To tune number of bytes to be fetched at a time::
+
     s3streamcat -b 1024 s3://bucketname/dir/file_path.gz
 
 Configurations
