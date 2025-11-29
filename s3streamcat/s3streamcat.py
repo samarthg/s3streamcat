@@ -22,15 +22,15 @@ def get_compressed_data_from_s3_file_in_ranges(s3, data_type, bytes_to_fetch=262
     while True:
         if data_type=='text':
             yield body.decode(encoding)
-        if data_type=='gz':
+        elif data_type=='gz':
             yield (d.decompress(body)).decode(encoding)
-        if data_type=='bz':
+        elif data_type=='bz':
             yield (zd.decompress(body)).decode(encoding)
-        if data_type=='xz':
+        elif data_type=='xz':
             yield (lzmad.decompress(body)).decode(encoding)
-        if data_type=='tar':
+        elif data_type=='tar':
             print('This compression format is currently not supported.')
-        if data_type=='zip':
+        elif data_type=='zip':
             print('This compression format is currently not supported.')
 
         remaining_content_length = content_length - (end+1)
@@ -76,9 +76,9 @@ def stream_s3_file():
 
     if ".gz" in file_key:
         data_type = 'gz'
-    if ".bz" in file_key:
+    elif ".bz" in file_key:
         data_type = 'bz'
-    if ".xz" in file_key:
+    elif ".xz" in file_key:
         data_type = 'xz'
     s3 = S3Client(bucket, file_key)
     try:
